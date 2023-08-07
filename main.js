@@ -16,3 +16,4 @@ function populateBookSection() {
     booksWrapper.appendChild(book);
   }
 }
+window.onload = test;
