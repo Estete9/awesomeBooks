@@ -17,7 +17,6 @@ function populateSection() {
     const book = document.createElement('div');
     book.innerHTML = bookHTML;
     booksWrapper.appendChild(book);
-    books = [];
   }
 }
 // LOCAL STORAGE LOGIC\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
