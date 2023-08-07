@@ -10,13 +10,13 @@ const book2 = {
   author: 'Rich marcus',
 };
 
-const bookCollection = [book1, book2];
-const bookCollectionWrapper = document.getElementById(
+let books = [book1, book2];
+const booksWrapper = document.getElementById(
   'book-collection-wrapper'
 );
 
-for (let i = 0; i < bookCollection.length; i += 1) {
-  const bookElement = bookCollection[i];
+for (let i = 0; i < books.length; i += 1) {
+  const bookElement = books[i];
 
   const bookHTML = `
         <p>${bookElement.title}</p>
@@ -26,5 +26,32 @@ for (let i = 0; i < bookCollection.length; i += 1) {
 `;
   const book = document.createElement('div');
   book.innerHTML = bookHTML;
-  bookCollectionWrapper.appendChild(book);
+  booksWrapper.appendChild(book);
+}
+
+let dataStored = [];
+
+function addBook() {
+
+  if (localStorage.getItem('books')) {
+    dataStored = localStorage.getItem('books');
+    books = JSON.parse(dataStored);
+  }
+  let book = makeBook();
+
+  books.push(book);
+  localStorage.setItem('books', JSON.stringify(books));
+}
+const addbutton = document.querySelector('#add_button');
+addbutton.addEventListener('click', () => addBook());
+
+function makeBook () {
+  const title = document.querySelector('#book_title').value;
+  const author = document.querySelector('#book_author').value;
+  
+  const book = {
+    title: title,
+    author: author,
+  }
+  return book;
 }
