@@ -1,30 +1,18 @@
-const book1 = {
-  id: 0,
-  title: 'Mind and body',
-  author: 'Alan Watts',
-};
+let books = [];
+const booksWrapper = document.getElementById('book-collection-wrapper');
+const book = document.createElement('div');
 
-const book2 = {
-  id: 1,
-  title: 'Rich and Richness',
-  author: 'Rich marcus',
-};
+function populateBookSection() {
+  for (let i = 0; i < books.length; i += 1) {
+    const bookElement = books[i];
 
-const bookCollection = [book1, book2];
-const bookCollectionWrapper = document.getElementById(
-  'book-collection-wrapper'
-);
-
-for (let i = 0; i < bookCollection.length; i += 1) {
-  const bookElement = bookCollection[i];
-
-  const bookHTML = `
-        <p>${bookElement.title}</p>
-        <p>${bookElement.author}</p>
-        <button>Remove</button>
-        <hr />
-`;
-  const book = document.createElement('div');
-  book.innerHTML = bookHTML;
-  bookCollectionWrapper.appendChild(book);
+    const bookHTML = `
+          <p>${bookElement.title}</p>
+          <p>${bookElement.author}</p>
+          <button>Remove</button>
+          <hr />
+  `;
+    book.innerHTML = bookHTML;
+    booksWrapper.appendChild(book);
+  }
 }
