@@ -20,8 +20,6 @@ function addToStorage() {
 }
 
 // REMOVE BOOK FROM STORAGE AND UPDATE UI
-// get a reference to all the delete buttons
-
 function deleteBook(event) {
   const bookId = event.target.id;
   const filteredBooks = books.filter((_, index) => {
@@ -41,7 +39,7 @@ function deleteBook(event) {
 
 // REPOPULATE THE BOOK SECTION LOGIC
 function populateBookSection() {
-  // retrieves from local storage to check if its empty or not, and what to do with the books array
+  // retrieves from local storage to check if it's empty or not, and what to do with the books array
   let local = JSON.parse(localStorage.getItem('books'));
   if (local === null) {
     books = [];
@@ -49,7 +47,7 @@ function populateBookSection() {
     books = local;
   }
 
-  // resets the wrapper so we can create and updates UI
+  // resets the wrapper so we can create and update UI
   booksWrapper.innerHTML = '';
   for (let i = 0; i < books.length; i += 1) {
     const book = document.createElement('div');
@@ -70,4 +68,8 @@ function populateBookSection() {
   }
 }
 
+// Set up event listeners after the functions are defined
+const deleteButtons = Array.from(document.querySelectorAll('.delete-btn'));
+
+// Load initial book data after functions are defined
 window.onload = populateBookSection;
