@@ -4,6 +4,41 @@ const booksWrapper = document.getElementById('book-collection-wrapper');
 const addButton = document.getElementById('add_button');
 addButton.addEventListener('click', addToStorage);
 
+// SAVE INTERACTION WITH USER IN LOCAL STORAGE
+function addToStorage() {
+  // retrieves the user's content from the inputs and creates an object
+  const title = document.querySelector('#book_title').value;
+  const author = document.querySelector('#book_author').value;
+  const book = {
+    title: title,
+    author: author,
+  };
+  // adds the created object to local storage and restarts the section
+  books.push(book);
+  localStorage.setItem('books', JSON.stringify(books));
+  populateBookSection();
+}
+
+// REMOVE BOOK FROM STORAGE AND UPDATE UI
+// get a reference to all the delete buttons
+
+function deleteBook(event) {
+  const bookId = event.target.id;
+  const filteredBooks = books.filter((_, index) => {
+    return index != bookId;
+  });
+  const local = JSON.parse(localStorage.getItem('books'));
+
+  if (local === null) {
+    books = [];
+  } else {
+    books = local;
+  }
+  books = filteredBooks;
+  localStorage.setItem('books', JSON.stringify(books));
+  populateBookSection();
+}
+
 // REPOPULATE THE BOOK SECTION LOGIC
 function populateBookSection() {
   // retrieves from local storage to check if its empty or not, and what to do with the books array
@@ -33,43 +68,6 @@ function populateBookSection() {
     const deleteBtn = book.querySelector('.delete-btn');
     deleteBtn.addEventListener('click', (event) => deleteBook(event));
   }
-}
-
-// SAVE INTERACTION WITH USER IN LOCAL STORAGE
-function addToStorage() {
-  // retrieves the user's content from the inputs and creates an object
-  const title = document.querySelector('#book_title').value;
-  const author = document.querySelector('#book_author').value;
-  const book = {
-    title: title,
-    author: author,
-  };
-  // adds the created object to local storage and restarts the section
-  books.push(book);
-  localStorage.setItem('books', JSON.stringify(books));
-  populateBookSection();
-}
-
-// REMOVE BOOK FROM STORAGE AND UPDATE UI
-// get a reference to all the delete buttons
-
-const deleteButtons = Array.from(document.querySelectorAll('.delete-btn'));
-
-function deleteBook(event) {
-  const bookId = event.target.id;
-  const filteredBooks = books.filter((_, index) => {
-    return index != bookId;
-  });
-  const local = JSON.parse(localStorage.getItem('books'));
-
-  if (local === null) {
-    books = [];
-  } else {
-    books = local;
-  }
-  books = filteredBooks;
-  localStorage.setItem('books', JSON.stringify(books));
-  populateBookSection();
 }
 
 window.onload = populateBookSection;
