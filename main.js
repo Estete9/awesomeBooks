@@ -1,53 +1,45 @@
 // VARIABLE AND ELEMENTS SETUP
-let books = [];
+const books = [];
 const booksWrapper = document.getElementById('book-collection-wrapper');
 const addButton = document.getElementById('add_button');
-addButton.addEventListener('click', addToStorage);
-
-// SAVE INTERACTION WITH USER IN LOCAL STORAGE
-function addToStorage() {
-  // retrieves the user's content from the inputs and creates an object
-  const title = document.querySelector('#book_title').value;
-  const author = document.querySelector('#book_author').value;
-  const book = {
-    title: title,
-    author: author,
-  };
-  // adds the created object to local storage and restarts the section
-  books.push(book);
-  localStorage.setItem('books', JSON.stringify(books));
-  populateBookSection();
-}
 
 // REMOVE BOOK FROM STORAGE AND UPDATE UI
 function deleteBook(event) {
   const bookId = event.target.id;
-  const filteredBooks = books.filter((_, index) => {
-    return index != bookId;
-  });
+  const filteredBooks = books.filter((_, index) => index !== bookId);
   const local = JSON.parse(localStorage.getItem('books'));
 
   if (local === null) {
-    books = [];
+    books.length = 0;
   } else {
-    books = local;
+    books.splice(0, books.length, ...local);
   }
-  books = filteredBooks;
+  localStorage.setItem('books', JSON.stringify(books));
+  populateBookSection();
+}
+
+// SAVE INTERACTION WITH USER IN LOCAL STORAGE
+function addToStorage() {
+  const title = document.querySelector('#book_title').value;
+  const author = document.querySelector('#book_author').value;
+  const book = {
+    title,
+    author,
+  };
+  books.push(book);
   localStorage.setItem('books', JSON.stringify(books));
   populateBookSection();
 }
 
 // REPOPULATE THE BOOK SECTION LOGIC
 function populateBookSection() {
-  // retrieves from local storage to check if it's empty or not, and what to do with the books array
-  let local = JSON.parse(localStorage.getItem('books'));
+  const local = JSON.parse(localStorage.getItem('books'));
   if (local === null) {
-    books = [];
+    books.length = 0;
   } else {
-    books = local;
+    books.splice(0, books.length, ...local);
   }
 
-  // resets the wrapper so we can create and update UI
   booksWrapper.innerHTML = '';
   for (let i = 0; i < books.length; i += 1) {
     const book = document.createElement('div');
@@ -55,11 +47,11 @@ function populateBookSection() {
     const bookElement = books[i];
 
     const bookHTML = `
-          <p>${bookElement.title}</p>
-          <p>${bookElement.author}</p>
-          <button class="delete-btn" id="${i}">Remove</button>
-          <hr />
-  `;
+      <p>${bookElement.title}</p>
+      <p>${bookElement.author}</p>
+      <button class="delete-btn" id="${i}">Remove</button>
+      <hr />
+    `;
 
     book.innerHTML = bookHTML;
     booksWrapper.appendChild(book);
@@ -68,8 +60,8 @@ function populateBookSection() {
   }
 }
 
-// Set up event listeners after the functions are defined
-const deleteButtons = Array.from(document.querySelectorAll('.delete-btn'));
-
 // Load initial book data after functions are defined
-window.onload = populateBookSection;
+window.onload = () => {
+  populateBookSection();
+  addButton.addEventListener('click', addToStorage);
+};
