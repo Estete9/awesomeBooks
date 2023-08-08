@@ -1,101 +1,181 @@
-# HTML & CSS3 & JavaScript Course
+<a name="readme-top"></a>
 
-If you are not familiar with linters, read [root level README](../README.md).
+<div align="center">
+  
+  <img src="logo.png" alt="logo" width="140"  height="auto" />
+  <br/>
 
-## Set-up GitHub Actions
+  <h3><b>Fullstack Personal Portfolio</b></h3>
 
-Please do the following **steps in this order**:
+</div>
 
-1. In the first commit of your feature branch create a `.github/workflows` folder and add a copy of [`.github/workflows/linters.yml`](.github/workflows/linters.yml) to that folder.
-   - **Remember** to use the file linked above
-   - **Remember** that `.github` folder starts with a dot.
-2. **Do not make any changes in config files - they represent style guidelines that you share with your team - which is a group of all Microverse students.**
-   - If you think that change is necessary - open a [Pull Request in this repository](../README.md#contributing) and let your code reviewer know about it.
-3. When you open your first pull request you should see the result of the GitHub actions checks:
+<!-- TABLE OF CONTENTS -->
 
-![gh actions checks](../assets/images/gh-actions-html-css-checks.png)
+# 📗 Table of Contents
 
-Click on the `Details` link of each action to see the full output and the errors that need to be fixed:
+- [📖 About the Project](#about-project)
+  - [🛠 Built With](#built-with)
+    - [Tech Stack](#tech-stack)
+    - [Key Features](#key-features)
+- [🚀 Live Demo](#live-demo)
+- [💻 Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Setup](#setup)
+  - [Install](#install)
+  - [Usage](#usage)
+  - [Run tests](#run-tests)
+  - [Deployment](#deployment)
+- [👥 Authors](#authors)
+- [🔭 Future Features](#future-features)
+- [🤝 Contributing](#contributing)
+- [⭐️ Show your support](#support)
+- [🙏 Acknowledgements](#acknowledgements)
+- [📝 License](#license)
 
-![gh actions failing checks](../assets/images/gh-actions-html-css-failing-checks.png)
+<!-- PROJECT DESCRIPTION -->
 
-## Set-up linters in your local env
+# 📖 [Fullstack Personal Portfolio] <a name="about-project"></a>
 
-**Note**: The `npm` package manager is going to create a `node_modules` directory to install all of your dependencies. You shouldn't commit that directory. To avoid that, you can create a [`.gitignore`](https://git-scm.com/docs/gitignore) file and add `node_modules` to it:
+**[Fullstack personal portfolio]** is a starting project to test linters and core files like gitignore with GitHub, HTML, CSS, and Javascript
 
+## 🛠 Built With <a name="built-with"></a>
+
+### Tech Stack <a name="tech-stack"></a>
+
+<details>
+  <summary>VCS</summary>
+  <ul>
+    <li><a href="https://git-scm.com/">Git</a></li>
+  </ul>
+</details>
+<details>
+  <summary>Text Editor</summary>
+  <ul>
+   <li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+  </ul>
+</details>
+<details>
+<summary>Languages</summary>
+<ul>
+   <li>HTML & CSS</li>
+  </ul>
+</details>
+
+<!-- Features -->
+
+### Key Features <a name="key-features"></a>
+
+- **Implement Lint configuration files**
+- **Add Readme file with template** -**Core files such as HTML, CSS, and Javascript**
+- **Pull request**
+- **Implementation of different sections of a personal portfolio**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🚀 Live Demo
+Check the live demo <a name="live-demo" href="https://estete9.github.io/Fullstack-Portfolio/">here!</a>
+
+<!-- GETTING STARTED -->
+
+## 💻 Getting Started <a name="getting-started"></a>
+
+
+To get a local copy up and running, follow these steps.
+
+1. Login to GitHub
+2. Copy the repository's [URL](https://github.com/Estete9/hello-microverse/tree/add-core-files)
+3. Navigate to your preferred directory to clone the project
+4. Use the command ```git clone [URL]``` to clone
+5. Open project in a text editor
+
+### Prerequisites
+
+In order to run this project you need:
+- Git
+- GitHub
+- A text editor
+
+### Setup
+
+Clone this repository to your desired folder:
+
+1. Login to GitHub
+2. Copy the [repository's](https://github.com/Estete9/hello-microverse) URL
+3. Navigate to your preferred directory to clone the project
+4. Use the command ```git clone [URL]``` to clone
+5. Open project in a text editor
+
+### Install
+
+Disclaimer: This project does not require installation. Just clone the repository open the HTML file in your favorite browser.
+For general purposes, Install this project with:
+```sh
+  cd my-folder
+  npm install
 ```
-# .gitignore
-node_modules/
-```
 
-### [Lighthouse](https://developers.google.com/web/tools/lighthouse)
 
-An open-source, automated tool for improving the quality of web pages. It has audits for performance, accessibility, progressive web apps, SEO and more.
+### Usage
 
-You can get the Lighthouse report by any of the following ways:
+To run the project, do the following:
+- Clone the repository
+- open the folder in a code editor.
+- Find the path of the index.html
+- open the index.html file in a Web Browser.
 
-- [In Chrome DevTools](https://developers.google.com/web/tools/lighthouse#devtools)
-- [From the command line](https://developers.google.com/web/tools/lighthouse#cli)
-- [As a Node module](https://developers.google.com/web/tools/lighthouse#programmatic)
-- [From a web UI](https://developers.google.com/web/tools/lighthouse#psi)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-To access the report generated by Lighthouse on your pull request, click the `Details` link for the `Linters/Lighthouse` check and you will see the full output of the action:
+<!-- AUTHORS -->
 
-![lighthouse report](../assets/images/lighthouse-report.png)
+## 👥 Authors <a name="authors"></a>
 
-### [Webhint](https://webhint.io/)
 
-A customizable linting tool that helps you improve your site's accessibility, speed, cross-browser compatibility, and more by checking your code for best practices and common errors.
+👤 **Esteban Palacios**
 
-**NOTE:** If you are running on Windows, you need to initialize npm to create `package.json` file. 
-   ```
-   npm init -y
-   ```
+- GitHub: [@Estete9](https://github.com/Estete9)
+- Twitter: [@NaughTban](https://twitter.com/NaughTban)
+- LinkedIn: [Esteban Palacios](https://www.linkedin.com/in/esteban-palacios-5030a772/)
 
-1. Run
-   ```
-   npm install --save-dev hint@7.x
-   ```
-   *not sure how to use npm? Read [this](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).*
-2. Copy [.hintrc](.hintrc) to the root directory of your project.
-3. **Do not make any changes in config files - they represent style guidelines that you share with your team - which is a group of all Microverse students.**
-   - If you think that change is necessary - open a [Pull Request in this repository](../README.md#contributing) and let your code reviewer know about it.
-4. Run
-   ```
-   npx hint .
-   ```
-5. Fix validation errors.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### [Stylelint](https://stylelint.io/)
+<!-- FUTURE FEATURES -->
 
-A mighty, modern linter that helps you avoid errors and enforce conventions in your styles.
+## 🔭 Future Features <a name="future-features"></a>
 
-1. Run
+- Coming soon
 
-   ```
-   npm install --save-dev stylelint@13.x stylelint-scss@3.x stylelint-config-standard@21.x stylelint-csstree-validator@1.x
-   ```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-   *not sure how to use npm? Read [this](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).*
 
-2. Copy [.stylelintrc.json](./.stylelintrc.json) to the root directory of your project.
-3. **Do not make any changes in config files - they represent style guidelines that you share with your team - which is a group of all Microverse students.**
-   - If you think that change is necessary - open a [Pull Request in this repository](../README.md#contributing) and let your code reviewer know about it.
-4. Run `npx stylelint "**/*.{css,scss}"` on the root of your directory of your project.
-5. Fix linter errors.
-6. **IMPORTANT NOTE**: feel free to research [auto-correct options for Stylelint](https://stylelint.io/user-guide/usage/options) if you get a flood of errors but keep in mind that correcting style errors manually will help you to make a habit of writing a clean code!
+<!-- CONTRIBUTING -->
 
-### [ESLint](https://eslint.org/)
+## 🤝 Contributing <a name="contributing"></a>
 
-1. Run 
-   ```
-   npm install --save-dev eslint@7.x eslint-config-airbnb-base@14.x eslint-plugin-import@2.x babel-eslint@10.x
-   ``` 
-   *not sure how to use npm? Read [this](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).*
+Contributions, issues, and feature requests are welcome!
 
-2. Copy [.eslintrc.json](./.eslintrc.json) to the root directory of your project.
-3. **Do not make any changes in config files - they represent style guidelines that you share with your team - which is a group of all Microverse students.**
-    - If you think that change is necessary - open a [Pull Request in this repository](../README.md#contributing) and let your code reviewer know about it.
-4. Run `npx eslint .` on the root of your directory of your project.
-5. Fix linter errors.
-6. **IMPORTANT NOTE**: feel free to research [auto-correct options for Eslint](https://eslint.org/docs/latest/user-guide/command-line-interface#fixing-problems) if you get a flood of errors but keep in mind that correcting style errors manually will help you to make a habit of writing a clean code!
+Feel free to check the [issues page](https://github.com/Estete9/hello-microverse/issues).
+
+<!-- SUPPORT -->
+
+## ⭐️ Show your support <a name="support"></a>
+
+
+
+If you like this project remember to star and share it 🥳️
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGEMENTS -->
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+
+I would like to thank Microverse for the support.
+
+<!-- LICENSE -->
+
+## 📝 License <a name="license"></a>
+
+This project is [MIT](/MIT.md) licensed.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
