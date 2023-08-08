@@ -48,15 +48,28 @@ function addToStorage() {
 
 window.onload = populateBookSection;
 
-function deleteBook() {
-  const delBtn = document.querySelectorAll('.delete-btn');
-  delBtn.forEach((bookElement, index) => {
-    bookElement.addEventListener('click', () => {
-      bookElement.parentNode.parentNode.remove();
-      const books = JSON.parse(localStorage.getItem('books'));
-      books.splice(index, 1);
-      localStorage.setItem('books', JSON.stringify(books));
-      List.displayBooks();
-    });
-  });
+const deleteButtons = Array.form (document.querySelectorAll('.delete-btn'));
+ 
+for (let i = 0; i < deleteButtons.length; i += 1){
+  deleteButtons[i].addEventListener("click", (event) => {deleteBook(event)})
+
+
+function deleteBook(event) {
+const booktoErase = event.target;
 }
+
+  let local = JSON.parse(localStorage.getItem('books'));
+  if (local === null) {
+    books = [];
+  } else {
+    books = local;
+  }
+
+  let text = event.target.nodeName;
+
+
+  const appendBooks = books.filter((book, index, arr) => {
+    return book.length > 5;
+  });
+
+  }
