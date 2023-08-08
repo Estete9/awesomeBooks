@@ -9,6 +9,9 @@ function populateBookSection() {
   } else {
     books = local;
   }
+
+  booksWrapper.innerHTML = '';
+
   for (let i = 0; i < books.length; i += 1) {
     const book = document.createElement('div');
     const bookElement = books[i];
