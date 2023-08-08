@@ -4,13 +4,13 @@ const booksWrapper = document.getElementById('book-collection-wrapper');
 const addButton = document.getElementById('add_button');
 
 // REMOVE BOOK FROM STORAGE AND UPDATE UI
-function deleteBook() {
+function deleteBook(event) {
   const local = JSON.parse(localStorage.getItem('books'));
-
+  const bookId = event.target.id;
   if (local === null) {
     books.length = 0;
   } else {
-    books.splice(0, books.length, ...local);
+    books.splice(bookId, 1);
   }
   localStorage.setItem('books', JSON.stringify(books));
   populateBookSection();
@@ -20,10 +20,9 @@ function deleteBook() {
 function addToStorage() {
   const title = document.querySelector('#book_title').value;
   const author = document.querySelector('#book_author').value;
-  const book = {
-    title,
-    author,
-  };
+  const book = {};
+  book.title = title;
+  book.author = author;
   books.push(book);
   localStorage.setItem('books', JSON.stringify(books));
   populateBookSection();
