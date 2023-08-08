@@ -18,16 +18,20 @@ function populateBookSection() {
   booksWrapper.innerHTML = '';
   for (let i = 0; i < books.length; i += 1) {
     const book = document.createElement('div');
+    book.className = 'book-item';
     const bookElement = books[i];
 
     const bookHTML = `
           <p>${bookElement.title}</p>
           <p>${bookElement.author}</p>
-          <button class="delete-btn">Remove</button>
+          <button class="delete-btn" id="${i}">Remove</button>
           <hr />
   `;
+
     book.innerHTML = bookHTML;
     booksWrapper.appendChild(book);
+    const deleteBtn = book.querySelector('.delete-btn');
+    deleteBtn.addEventListener('click', (event) => deleteBook(event));
   }
 }
 
@@ -49,30 +53,23 @@ function addToStorage() {
 // REMOVE BOOK FROM STORAGE AND UPDATE UI
 // get a reference to all the delete buttons
 
-window.onload = populateBookSection;
-
-const deleteButtons = Array.form (document.querySelectorAll('.delete-btn'));
- 
-for (let i = 0; i < deleteButtons.length; i += 1){
-  deleteButtons[i].addEventListener("click", (event) => {deleteBook(event)})
-
+const deleteButtons = Array.from(document.querySelectorAll('.delete-btn'));
 
 function deleteBook(event) {
-const booktoErase = event.target;
-}
+  const bookId = event.target.id;
+  const filteredBooks = books.filter((_, index) => {
+    return index != bookId;
+  });
+  const local = JSON.parse(localStorage.getItem('books'));
 
-  let local = JSON.parse(localStorage.getItem('books'));
   if (local === null) {
     books = [];
   } else {
     books = local;
   }
+  books = filteredBooks;
+  localStorage.setItem('books', JSON.stringify(books));
+  populateBookSection();
+}
 
-  let text = event.target.nodeName;
-
-
-  const appendBooks = books.filter((book, index, arr) => {
-    return book.length > 5;
-  });
-
-  }
+window.onload = populateBookSection;
