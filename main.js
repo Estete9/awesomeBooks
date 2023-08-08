@@ -63,4 +63,8 @@
     populateBookSection();
     addButton.addEventListener('click', addToStorage);
   };
+<<<<<<< HEAD
 })();
+=======
+});
+>>>>>>> da6e491248e97e9c67dcd53ddb38d0e49edd1c62
