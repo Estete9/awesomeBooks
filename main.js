@@ -1,10 +1,10 @@
-// VARIABLE AND ELEMENT SETUP
+// VARIABLE AND ELEMENTS SETUP
 let books = [];
 const booksWrapper = document.getElementById('book-collection-wrapper');
 const addButton = document.getElementById('add_button');
 addButton.addEventListener('click', addToStorage);
 
-// REPOPULATES THE BOOK SECTION LOGIC
+// REPOPULATE THE BOOK SECTION LOGIC
 function populateBookSection() {
   // retrieves from local storage to check if its empty or not, and what to do with the books array
   let local = JSON.parse(localStorage.getItem('books'));
@@ -14,7 +14,7 @@ function populateBookSection() {
     books = local;
   }
 
-  // resets the wrapper so we can create and repopulate with the updated information
+  // resets the wrapper so we can create and updates UI
   booksWrapper.innerHTML = '';
   for (let i = 0; i < books.length; i += 1) {
     const book = document.createElement('div');
@@ -45,6 +45,9 @@ function addToStorage() {
   localStorage.setItem('books', JSON.stringify(books));
   populateBookSection();
 }
+
+// REMOVE BOOK FROM STORAGE AND UPDATE UI
+// get a reference to all the delete buttons
 
 window.onload = populateBookSection;
 
