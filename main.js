@@ -2,12 +2,11 @@
 let books = [];
 const booksWrapper = document.getElementById('book-collection-wrapper');
 const addButton = document.getElementById('add_button');
-addButton.addEventListener('click', addToStorage);
 
 // REPOPULATE THE BOOK SECTION LOGIC
 function populateBookSection() {
   // retrieves from local storage to check if its empty or not, and what to do with the books array
-  let local = JSON.parse(localStorage.getItem('books'));
+  const local = JSON.parse(localStorage.getItem('books'));
   if (local === null) {
     books = [];
   } else {
@@ -20,7 +19,6 @@ function populateBookSection() {
     const book = document.createElement('div');
     book.className = 'book-item';
     const bookElement = books[i];
-
     const bookHTML = `
           <p>${bookElement.title}</p>
           <p>${bookElement.author}</p>
@@ -31,7 +29,20 @@ function populateBookSection() {
     book.innerHTML = bookHTML;
     booksWrapper.appendChild(book);
     const deleteBtn = book.querySelector('.delete-btn');
-    deleteBtn.addEventListener('click', (event) => deleteBook(event));
+    deleteBtn.addEventListener('click', (event) => {
+      const bookId = event.target.id;
+      const filteredBooks = books.filter((_, index) => index !== bookId);
+      const local = JSON.parse(localStorage.getItem('books'));
+
+      if (local === null) {
+        books = [];
+      } else {
+        books = local;
+      }
+      books = filteredBooks;
+      localStorage.setItem('books', JSON.stringify(books));
+      populateBookSection();
+    });
   }
 }
 
@@ -40,36 +51,20 @@ function addToStorage() {
   // retrieves the user's content from the inputs and creates an object
   const title = document.querySelector('#book_title').value;
   const author = document.querySelector('#book_author').value;
-  const book = {
-    title: title,
-    author: author,
-  };
+  const book = {};
+  book.title = title;
+  book.author = author;
   // adds the created object to local storage and restarts the section
   books.push(book);
   localStorage.setItem('books', JSON.stringify(books));
   populateBookSection();
 }
 
+addButton.addEventListener('click', addToStorage);
+
 // REMOVE BOOK FROM STORAGE AND UPDATE UI
 // get a reference to all the delete buttons
 
-const deleteButtons = Array.from(document.querySelectorAll('.delete-btn'));
-
-function deleteBook(event) {
-  const bookId = event.target.id;
-  const filteredBooks = books.filter((_, index) => {
-    return index != bookId;
-  });
-  const local = JSON.parse(localStorage.getItem('books'));
-
-  if (local === null) {
-    books = [];
-  } else {
-    books = local;
-  }
-  books = filteredBooks;
-  localStorage.setItem('books', JSON.stringify(books));
-  populateBookSection();
-}
+// function deleteBook(event) {}
 
 window.onload = populateBookSection;
