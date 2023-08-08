@@ -6,7 +6,7 @@ const addButton = document.getElementById('add_button');
 // REMOVE BOOK FROM STORAGE AND UPDATE UI
 function deleteBook(event) {
   const bookId = event.target.id;
-  const local = JSON.parse(localStorage.getItem('books'));
+  const local = JSgitON.parse(localStorage.getItem('books'));
 
   if (local === null) {
     books.length = 0;
