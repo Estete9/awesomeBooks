@@ -4,8 +4,7 @@ const booksWrapper = document.getElementById('book-collection-wrapper');
 const addButton = document.getElementById('add_button');
 
 // REMOVE BOOK FROM STORAGE AND UPDATE UI
-function deleteBook(event) {
-  const bookId = event.target.id;
+function deleteBook() {
   const local = JSON.parse(localStorage.getItem('books'));
 
   if (local === null) {
@@ -55,7 +54,7 @@ function populateBookSection() {
     book.innerHTML = bookHTML;
     booksWrapper.appendChild(book);
     const deleteBtn = book.querySelector('.delete-btn');
-    deleteBtn.addEventListener('click', (event) => deleteBook(event));
+    deleteBtn.addEventListener('click', deleteBook);
   }
 }
 
