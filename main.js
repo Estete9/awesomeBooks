@@ -23,7 +23,7 @@ function populateBookSection() {
     const bookHTML = `
           <p>${bookElement.title}</p>
           <p>${bookElement.author}</p>
-          <button>Remove</button>
+          <button class="delete-btn">Remove</button>
           <hr />
   `;
     book.innerHTML = bookHTML;
@@ -47,3 +47,16 @@ function addToStorage() {
 }
 
 window.onload = populateBookSection;
+
+function deleteBook() {
+  const delBtn = document.querySelectorAll('.delete-btn');
+  delBtn.forEach((bookElement, index) => {
+    bookElement.addEventListener('click', () => {
+      bookElement.parentNode.parentNode.remove();
+      const books = JSON.parse(localStorage.getItem('books'));
+      books.splice(index, 1);
+      localStorage.setItem('books', JSON.stringify(books));
+      List.displayBooks();
+    });
+  });
+}
