@@ -65,6 +65,4 @@ addButton.addEventListener('click', addToStorage);
 // REMOVE BOOK FROM STORAGE AND UPDATE UI
 // get a reference to all the delete buttons
 
-// function deleteBook(event) {}
-
 window.onload = populateBookSection;
