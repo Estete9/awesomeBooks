@@ -16,18 +16,6 @@ function deleteBook(event) {
   populateBookSection();
 }
 
-// SAVE INTERACTION WITH USER IN LOCAL STORAGE
-function addToStorage() {
-  const title = document.querySelector('#book_title').value;
-  const author = document.querySelector('#book_author').value;
-  const book = {};
-  book.title = title;
-  book.author = author;
-  books.push(book);
-  localStorage.setItem('books', JSON.stringify(books));
-  populateBookSection();
-}
-
 // REPOPULATE THE BOOK SECTION LOGIC
 function populateBookSection() {
   const local = JSON.parse(localStorage.getItem('books'));
@@ -57,8 +45,20 @@ function populateBookSection() {
   }
 }
 
+// SAVE INTERACTION WITH USER IN LOCAL STORAGE
+function addToStorage() {
+  const title = document.querySelector('#book_title').value;
+  const author = document.querySelector('#book_author').value;
+  const book = {};
+  book.title = title;
+  book.author = author;
+  books.push(book);
+  localStorage.setItem('books', JSON.stringify(books));
+  populateBookSection();
+}
+
 // Load initial book data after functions are defined
-window.onload = () => {
+window.onload = function () {
   populateBookSection();
   addButton.addEventListener('click', addToStorage);
 };
