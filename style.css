@@ -27,14 +27,6 @@
   margin-left: auto;
 }
 
-#book-collection-wrapper > :nth-child(even) {
-  background-color: darkgrey;
-}
-
-#book-collection-wrapper > :nth-child(odd) {
-  background-color: lightgrey;
-}
-
 #add-book-section {
   display: flex;
   flex-direction: column;
@@ -53,7 +45,6 @@
   margin-bottom: 10px;
   border-radius: 3px;
   padding: 4px;
-
 }
 
 #add_button {
@@ -61,3 +52,10 @@
   margin-left: auto;
 }
 
+#book-collection-wrapper > :nth-child(even) {
+  background-color: darkgrey;
+}
+
+#book-collection-wrapper > :nth-child(odd) {
+  background-color: lightgrey;
+}
