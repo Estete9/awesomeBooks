@@ -2,10 +2,9 @@
 
 <div align="center">
   
-  <img src="logo.png" alt="logo" width="140"  height="auto" />
   <br/>
 
-  <h3><b>Fullstack Personal Portfolio</b></h3>
+  <h3><b>Book lovers' reading list</b></h3>
 
 </div>
 
@@ -34,9 +33,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Fullstack Personal Portfolio] <a name="about-project"></a>
+# 📖 [Book Lover's reading list] <a name="about-project"></a>
 
-**[Fullstack personal portfolio]** is a starting project to test linters and core files like gitignore with GitHub, HTML, CSS, and Javascript
+**Book Lover's reading list** is a starting project to test linters and core files like gitignore with GitHub, HTML, CSS, and Javascript
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -57,7 +56,9 @@
 <details>
 <summary>Languages</summary>
 <ul>
-   <li>HTML & CSS</li>
+   <li>HTML</li>
+   <li>CSS</li>
+   <li>JavaScript</li>
   </ul>
 </details>
 
@@ -65,63 +66,40 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **Implement Lint configuration files**
-- **Add Readme file with template** -**Core files such as HTML, CSS, and Javascript**
-- **Pull request**
-- **Implementation of different sections of a personal portfolio**
+- **Storage and retrieval of all the books from local memory**
+- **Add and remove books of content**
+- **Clear commit history**
+- **Documented in a clear and direct manner**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🚀 Live Demo
-Check the live demo <a name="live-demo" href="https://estete9.github.io/Fullstack-Portfolio/">here!</a>
+comming soon  <a name="live-demo" href="https://estete9.github.io/Fullstack-Portfolio/">here!</a>
 
 <!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-
 To get a local copy up and running, follow these steps.
-
-1. Login to GitHub
-2. Copy the repository's [URL](https://github.com/Estete9/hello-microverse/tree/add-core-files)
-3. Navigate to your preferred directory to clone the project
-4. Use the command ```git clone [URL]``` to clone
-5. Open project in a text editor
 
 ### Prerequisites
 
 In order to run this project you need:
-- Git
-- GitHub
-- A text editor
 
 ### Setup
 
-Clone this repository to your desired folder:
-
-1. Login to GitHub
-2. Copy the [repository's](https://github.com/Estete9/hello-microverse) URL
-3. Navigate to your preferred directory to clone the project
-4. Use the command ```git clone [URL]``` to clone
-5. Open project in a text editor
+Acquire a Web browser
 
 ### Install
 
-Disclaimer: This project does not require installation. Just clone the repository open the HTML file in your favorite browser.
-For general purposes, Install this project with:
-```sh
-  cd my-folder
-  npm install
-```
-
-
+No install needed.
 ### Usage
 
-To run the project, do the following:
-- Clone the repository
-- open the folder in a code editor.
-- Find the path of the index.html
-- open the index.html file in a Web Browser.
+In a browser visit [coming soon](/)
+
+### Run tests
+
+Use your browser's developer tools
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -129,12 +107,17 @@ To run the project, do the following:
 
 ## 👥 Authors <a name="authors"></a>
 
-
 👤 **Esteban Palacios**
 
 - GitHub: [@Estete9](https://github.com/Estete9)
 - Twitter: [@NaughTban](https://twitter.com/NaughTban)
 - LinkedIn: [Esteban Palacios](https://www.linkedin.com/in/esteban-palacios-5030a772/)
+
+👤 **Alqama Saeed**
+
+- GitHub: [@smas0900](https://github.com/smas0900)
+- Twitter: [@AlqamaSaeed](https://twitter.com/AlqamaSaeed)
+- LinkedIn: [AlqamaSaeed](linkedin.com/in/alqama-saeed-598086120)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -142,7 +125,8 @@ To run the project, do the following:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- Coming soon
+- **Group books by categories**
+- **Book reading implementation**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -176,6 +160,6 @@ I would like to thank Microverse for the support.
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](/MIT.md) licensed.
+This project is [MIT](./MIT.md) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
