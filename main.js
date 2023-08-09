@@ -18,19 +18,18 @@ class Books {
       this.booksArr.splice(bookId, 1);
       books = this.booksArr;
     }
-    // eslint-disable-next-line
-    localStorage.setItem('books', JSON.stringify(books));
+    localStorage.setItem('books', JSON.stringify(this.booksArr));
     populateBookSection();
   }
 
   // SAVE INTERACTION WITH USER IN LOCAL STORAGE
-  // eslint-disable-next-line class-methods-use-this
   addToStorage() {
     const book = {};
     book.title = document.querySelector('#book_title').value;
     book.author = document.querySelector('#book_author').value;
-    books.push(book);
-    localStorage.setItem('books', JSON.stringify(books));
+    this.booksArr.push(book);
+    books = this.booksArr
+    localStorage.setItem('books', JSON.stringify(this.booksArr));
     populateBookSection();
   }
 
