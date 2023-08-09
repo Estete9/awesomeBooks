@@ -19,7 +19,7 @@ class Books {
       books = this.booksArr;
     }
     // eslint-disable-next-line
-    localStorage.setItem('books', JSON.stringify(books)); // eslint-disable-line no-use-before-define
+    localStorage.setItem('books', JSON.stringify(books)); 
     populateBookSection();
   }
 
@@ -28,9 +28,10 @@ class Books {
     const book = {};
     book.title = document.querySelector('#book_title').value;
     book.author = document.querySelector('#book_author').value;
+    // eslint-disable-next-line
     books.push(book);
     // eslint-disable-next-line
-    localStorage.setItem('books', JSON.stringify(books)); // eslint-disable-line no-use-before-define
+    localStorage.setItem('books', JSON.stringify(books)); 
     populateBookSection();
   }
 
