@@ -17,14 +17,12 @@ class Books {
     } else {
       books.splice(bookId, 1);
     }
-    localStorage.setItem('books', JSON.stringify(books));
+    localStorage.setItem('books', JSON.stringify(this.books));
     populateBookSection();
   }
 
   // SAVE INTERACTION WITH USER IN LOCAL STORAGE
   addToStorage() {
-    // const title = document.querySelector('#book_title').value;
-    // const author = document.querySelector('#book_author').value;
     const book = {};
     book.title = document.querySelector('#book_title').value;
     book.author = document.querySelector('#book_author').value;
@@ -32,7 +30,16 @@ class Books {
     localStorage.setItem('books', JSON.stringify(books));
     populateBookSection();
   }
+
+  attachEventListener() {
+    console.log('attach listeners');
+    addButton.addEventListener('click', this.addToStorage);
+    const deleteBtns = Array.from(document.querySelectorAll('.delete-btn'));
+    deleteBtns.forEach((it) => it.addEventListener('click', this.deleteBook));
+  }
 }
+
+const bookItem = new Books();
 
 function populateBookSection() {
   const local = JSON.parse(localStorage.getItem('books'));
@@ -57,11 +64,9 @@ function populateBookSection() {
 
     book.innerHTML = bookHTML;
     booksWrapper.appendChild(book);
-    const deleteBtn = book.querySelector('.delete-btn');
-    deleteBtn.addEventListener('click', (event) => this.deleteBook(event));
   }
+  bookItem.attachEventListener();
 }
 
-const book = new Books();
-addButton.addEventListener('click', book.addToStorage);
 populateBookSection();
+bookItem.attachEventListener();
