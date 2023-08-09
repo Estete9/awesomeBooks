@@ -16,6 +16,7 @@ class Books {
     } else {
       books.splice(bookId, 1);
     }
+    // eslint-disable-next-line
     localStorage.setItem('books', JSON.stringify(books)); // eslint-disable-line no-use-before-define
     populateBookSection();
   }
@@ -26,6 +27,7 @@ class Books {
     book.title = document.querySelector('#book_title').value;
     book.author = document.querySelector('#book_author').value;
     books.push(book);
+    // eslint-disable-next-line
     localStorage.setItem('books', JSON.stringify(books)); // eslint-disable-line no-use-before-define
     populateBookSection();
   }
