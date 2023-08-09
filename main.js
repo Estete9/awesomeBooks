@@ -6,17 +6,19 @@ class Books {
   constructor() {
     this.title = '';
     this.author = '';
+    this.booksArr = books;
   }
 
   deleteBook(event) {
     const local = JSON.parse(localStorage.getItem('books'));
     const bookId = event.target.id;
     if (local === null) {
-      books.length = 0;
+      this.booksArr.length = 0;
     } else {
-      books.splice(bookId, 1);
+      this.booksArr.splice(bookId, 1);
+      books = this.booksArr
     }
-    localStorage.setItem('books', JSON.stringify(books)); // eslint-disable-line no-use-before-define
+    localStorage.setItem('books', JSON.stringify(this.booksArr)); // eslint-disable-line no-use-before-define
     populateBookSection();
   }
 
@@ -25,8 +27,9 @@ class Books {
     const book = {};
     book.title = document.querySelector('#book_title').value;
     book.author = document.querySelector('#book_author').value;
-    books.push(book);
-    localStorage.setItem('books', JSON.stringify(books)); // eslint-disable-line no-use-before-define
+    this.booksArr.push(book);
+    localStorage.setItem('books', JSON.stringify(this.booksArr)); // eslint-disable-line no-use-before-define
+    books = this.booksArr
     populateBookSection();
   }
 
