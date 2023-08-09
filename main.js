@@ -43,7 +43,7 @@ class Books {
 
 const bookItem = new Books();
 
-function populateBookSection() {
+populateBookSection = function () {
   const localData = localStorage.getItem('books');
   let local = [];
 
