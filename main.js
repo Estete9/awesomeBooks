@@ -1,6 +1,7 @@
 const addButton = document.getElementById('add_button');
 const booksWrapper = document.getElementById('book-collection-wrapper');
 const books = [];
+let populateBookSection = () => {};
 class Books {
   constructor() {
     this.title = '';
@@ -31,6 +32,12 @@ class Books {
     localStorage.setItem('books', JSON.stringify(books));
     /* eslint-enable */
     populateBookSection();
+  }
+
+  attachEventListener() {
+    addButton.addEventListener('click', this.addToStorage);
+    const deleteBtns = Array.from(document.querySelectorAll('.delete-btn'));
+    deleteBtns.forEach((it) => it.addEventListener('click', this.deleteBook));
   }
 }
 
@@ -66,7 +73,9 @@ function populateBookSection() {
     const deleteBtn = book.querySelector('.delete-btn');
     deleteBtn.addEventListener('click', (event) => bookItem.deleteBook(event));
   }
-}
+  bookItem.attachEventListener();
+};
 
 addButton.addEventListener('click', bookItem.addToStorage);
 populateBookSection();
+bookItem.attachEventListener();
