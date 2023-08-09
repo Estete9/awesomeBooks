@@ -5,6 +5,17 @@ class Books {
   constructor() {
     this.title = '';
     this.author = '';
+    this.deleteBook = function (event) {
+      const local = JSON.parse(localStorage.getItem('books'));
+      const bookId = event.target.id;
+      if (local === null) {
+        books.length = 0;
+      } else {
+        books.splice(bookId, 1);
+      }
+      localStorage.setItem('books', JSON.stringify(this.books));
+      populateBookSection();
+    };
   }
 
   deleteBook(event) {
@@ -25,8 +36,14 @@ class Books {
     book.title = document.querySelector('#book_title').value;
     book.author = document.querySelector('#book_author').value;
     books.push(book);
-    localStorage.setItem('books', JSON.stringify(books));
+    localStorage.setItem('books', JSON.stringify(this.books));
     populateBookSection();
+  }
+
+  attachEventListener() {
+    addButton.addEventListener('click', this.addToStorage);
+    const deleteBtns = Array.from(document.querySelectorAll('.delete-btn'));
+    deleteBtns.forEach((it) => it.addEventListener('click', this.deleteBook));
   }
 }
 
@@ -62,8 +79,10 @@ function populateBookSection() {
     const deleteBtn = book.querySelector('.delete-btn');
     deleteBtn.addEventListener('click', (event) => bookItem.deleteBook(event));
   }
+  bookItem.attachEventListener();
 }
 
 
 addButton.addEventListener('click', bookItem.addToStorage);
 populateBookSection();
+bookItem.attachEventListener();
