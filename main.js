@@ -19,19 +19,18 @@ class Books {
       books = this.booksArr;
     }
     // eslint-disable-next-line
-    localStorage.setItem('books', JSON.stringify(books)); 
+    localStorage.setItem('books', JSON.stringify(books));
     populateBookSection();
   }
 
   // SAVE INTERACTION WITH USER IN LOCAL STORAGE
+  // eslint-disable-next-line class-methods-use-this
   addToStorage() {
     const book = {};
     book.title = document.querySelector('#book_title').value;
     book.author = document.querySelector('#book_author').value;
-    // eslint-disable-next-line
     books.push(book);
-    // eslint-disable-next-line
-    localStorage.setItem('books', JSON.stringify(books)); 
+    localStorage.setItem('books', JSON.stringify(books));
     populateBookSection();
   }
 
