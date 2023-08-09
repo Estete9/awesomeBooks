@@ -7,8 +7,6 @@ class Books {
     this.author = '';
   }
 
-  // deleteBook = function () {};
-
   deleteBook(event) {
     const local = JSON.parse(localStorage.getItem('books'));
     const bookId = event.target.id;
@@ -23,8 +21,6 @@ class Books {
 
   // SAVE INTERACTION WITH USER IN LOCAL STORAGE
   addToStorage() {
-    // const title = document.querySelector('#book_title').value;
-    // const author = document.querySelector('#book_author').value;
     const book = {};
     book.title = document.querySelector('#book_title').value;
     book.author = document.querySelector('#book_author').value;
@@ -34,13 +30,19 @@ class Books {
   }
 }
 
+const bookItem = new Books();
+
 function populateBookSection() {
-  const local = JSON.parse(localStorage.getItem('books'));
-  if (local === null) {
-    books.length = 0;
-  } else {
-    books.splice(0, books.length, ...local);
+  const localData = localStorage.getItem('books');
+  let local = [];
+
+  try {
+    local = JSON.parse(localData);
+  } catch (error) {
+    console.warn('local storage is empty');
+    local = [];
   }
+  books.splice(0, books.length, ...local);
 
   booksWrapper.innerHTML = '';
   for (let i = 0; i < books.length; i += 1) {
@@ -58,10 +60,10 @@ function populateBookSection() {
     book.innerHTML = bookHTML;
     booksWrapper.appendChild(book);
     const deleteBtn = book.querySelector('.delete-btn');
-    deleteBtn.addEventListener('click', (event) => this.deleteBook(event));
+    deleteBtn.addEventListener('click', (event) => bookItem.deleteBook(event));
   }
 }
 
-const book = new Books();
-addButton.addEventListener('click', book.addToStorage);
+
+addButton.addEventListener('click', bookItem.addToStorage);
 populateBookSection();
