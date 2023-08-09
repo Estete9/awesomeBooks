@@ -1,10 +1,39 @@
-// VARIABLE AND ELEMENTS SETUP
-const books = [];
-const booksWrapper = document.getElementById('book-collection-wrapper');
 const addButton = document.getElementById('add_button');
-let deleteBook = function () {};
+const booksWrapper = document.getElementById('book-collection-wrapper');
+const books = [];
+class Books {
+  constructor() {
+    this.title = '';
+    this.author = '';
+  }
 
-// REPOPULATE THE BOOK SECTION LOGIC
+  // deleteBook = function () {};
+
+  deleteBook(event) {
+    const local = JSON.parse(localStorage.getItem('books'));
+    const bookId = event.target.id;
+    if (local === null) {
+      books.length = 0;
+    } else {
+      books.splice(bookId, 1);
+    }
+    localStorage.setItem('books', JSON.stringify(books));
+    populateBookSection();
+  }
+
+  // SAVE INTERACTION WITH USER IN LOCAL STORAGE
+  addToStorage() {
+    // const title = document.querySelector('#book_title').value;
+    // const author = document.querySelector('#book_author').value;
+    const book = {};
+    book.title = document.querySelector('#book_title').value;
+    book.author = document.querySelector('#book_author').value;
+    books.push(book);
+    localStorage.setItem('books', JSON.stringify(books));
+    populateBookSection();
+  }
+}
+
 function populateBookSection() {
   const local = JSON.parse(localStorage.getItem('books'));
   if (local === null) {
@@ -20,7 +49,7 @@ function populateBookSection() {
     const bookElement = books[i];
 
     const bookHTML = `
-        <p>${bookElement.title}</p>
+        <p>"${bookElement.title}" by</p>
         <p>${bookElement.author}</p>
         <button class="delete-btn" id="${i}">Remove</button>
         <hr />
@@ -29,37 +58,10 @@ function populateBookSection() {
     book.innerHTML = bookHTML;
     booksWrapper.appendChild(book);
     const deleteBtn = book.querySelector('.delete-btn');
-    deleteBtn.addEventListener('click', deleteBook);
+    deleteBtn.addEventListener('click', (event) => this.deleteBook(event));
   }
 }
 
-// UPDATE FUNCTION WITH REMOVE BOOK FROM STORAGE AND UPDATE UI LOGIC
-deleteBook = function (event) {
-  const local = JSON.parse(localStorage.getItem('books'));
-  const bookId = event.target.id;
-  if (local === null) {
-    books.length = 0;
-  } else {
-    books.splice(bookId, 1);
-  }
-  localStorage.setItem('books', JSON.stringify(books));
-  populateBookSection();
-};
-
-// SAVE INTERACTION WITH USER IN LOCAL STORAGE
-function addToStorage() {
-  const title = document.querySelector('#book_title').value;
-  const author = document.querySelector('#book_author').value;
-  const book = {};
-  book.title = title;
-  book.author = author;
-  books.push(book);
-  localStorage.setItem('books', JSON.stringify(books));
-  populateBookSection();
-}
-
-// Load initial book data after functions are defined
-window.onload = function () {
-  populateBookSection();
-  addButton.addEventListener('click', addToStorage);
-};
+const book = new Books();
+addButton.addEventListener('click', book.addToStorage);
+populateBookSection();

@@ -20,6 +20,7 @@
 .book-item {
   display: flex;
   padding: 15px;
+  gap: 2%;
 }
 
 .book-item > button {
