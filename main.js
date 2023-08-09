@@ -16,9 +16,7 @@ class Books {
     } else {
       books.splice(bookId, 1);
     }
-    /* eslint-disable */
-    localStorage.setItem('books', JSON.stringify(books));
-    /* eslint-enable */
+    localStorage.setItem('books', JSON.stringify(books)); // eslint-disable-line no-use-before-define
     populateBookSection();
   }
 
@@ -28,9 +26,7 @@ class Books {
     book.title = document.querySelector('#book_title').value;
     book.author = document.querySelector('#book_author').value;
     books.push(book);
-    /* eslint-disable */
-    localStorage.setItem('books', JSON.stringify(books));
-    /* eslint-enable */
+    localStorage.setItem('books', JSON.stringify(books)); // eslint-disable-line no-use-before-define
     populateBookSection();
   }
 
@@ -43,7 +39,7 @@ class Books {
 
 const bookItem = new Books();
 
-function populateBookSection() {
+populateBookSection = function () {
   const localData = localStorage.getItem('books');
   let local = [];
 
