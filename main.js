@@ -6,15 +6,17 @@ class Books {
   constructor() {
     this.title = '';
     this.author = '';
+    this.booksArr = books;
   }
 
   deleteBook(event) {
     const local = JSON.parse(localStorage.getItem('books'));
     const bookId = event.target.id;
     if (local === null) {
-      books.length = 0;
+      this.booksArr.length = 0;
     } else {
-      books.splice(bookId, 1);
+      this.booksArr.splice(bookId, 1);
+      books = this.booksArr
     }
     // eslint-disable-next-line
     localStorage.setItem('books', JSON.stringify(books)); // eslint-disable-line no-use-before-define
