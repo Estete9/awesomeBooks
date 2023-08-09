@@ -113,10 +113,11 @@ Use your browser's developer tools
 - Twitter: [@NaughTban](https://twitter.com/NaughTban)
 - LinkedIn: [Esteban Palacios](https://www.linkedin.com/in/esteban-palacios-5030a772/)
 
-👤 **YOUR NAME HERE**
--
--
--
+👤 **Alqama Saeed**
+
+- GitHub: [@smas0900](https://github.com/smas0900)
+- Twitter: [@AlqamaSaeed](https://twitter.com/AlqamaSaeed)
+- LinkedIn: [AlqamaSaeed](linkedin.com/in/alqama-saeed-598086120)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
