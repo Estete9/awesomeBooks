@@ -5,34 +5,29 @@ class Books {
   constructor() {
     this.title = '';
     this.author = '';
+    this.deleteBook = function (event) {
+      const local = JSON.parse(localStorage.getItem('books'));
+      const bookId = event.target.id;
+      if (local === null) {
+        books.length = 0;
+      } else {
+        books.splice(bookId, 1);
+      }
+      localStorage.setItem('books', JSON.stringify(this.books));
+      populateBookSection();
+    };
   }
 
-  // deleteBook = function () {};
-
-  deleteBook(event) {
-    const local = JSON.parse(localStorage.getItem('books'));
-    const bookId = event.target.id;
-    if (local === null) {
-      books.length = 0;
-    } else {
-      books.splice(bookId, 1);
-    }
-    localStorage.setItem('books', JSON.stringify(this.books));
-    populateBookSection();
-  }
-
-  // SAVE INTERACTION WITH USER IN LOCAL STORAGE
   addToStorage() {
     const book = {};
     book.title = document.querySelector('#book_title').value;
     book.author = document.querySelector('#book_author').value;
     books.push(book);
-    localStorage.setItem('books', JSON.stringify(books));
+    localStorage.setItem('books', JSON.stringify(this.books));
     populateBookSection();
   }
 
   attachEventListener() {
-    console.log('attach listeners');
     addButton.addEventListener('click', this.addToStorage);
     const deleteBtns = Array.from(document.querySelectorAll('.delete-btn'));
     deleteBtns.forEach((it) => it.addEventListener('click', this.deleteBook));
