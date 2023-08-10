@@ -48,9 +48,9 @@ class Books {
   }
 
   attachEventListener() {
-    addButton.addEventListener('click', this.addToStorage);
+    addButton.onclick = this.addToStorage;
     const deleteBtns = Array.from(document.querySelectorAll('.delete-btn'));
-    deleteBtns.forEach((it) => it.addEventListener('click', this.deleteBook));
+    deleteBtns.forEach((it) => it.onclick = this.deleteBook);
   }
 }
 
@@ -87,6 +87,5 @@ populateBookSection = function () {
   bookItem.attachEventListener();
 };
 
-addButton.addEventListener('click', bookItem.addToStorage);
-populateBookSection();
 bookItem.attachEventListener();
+populateBookSection();
