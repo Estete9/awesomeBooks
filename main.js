@@ -1,34 +1,48 @@
 const addButton = document.getElementById('add_button');
 const booksWrapper = document.getElementById('book-collection-wrapper');
-let books = [];
 let populateBookSection = () => {};
 class Books {
   constructor() {
     this.title = '';
     this.author = '';
-    this.booksArr = books;
+    this.booksArr = [];
   }
 
   deleteBook(event) {
-    const local = JSON.parse(localStorage.getItem('books'));
+    const localData = localStorage.getItem('books');
+    let local = [];
     const bookId = event.target.id;
-    if (local === null) {
-      this.booksArr.length = 0;
-    } else {
-      this.booksArr.splice(bookId, 1);
-      books = this.booksArr;
+
+    try {
+      local = JSON.parse(localData);
+    } catch (error) {
+      console.warn('local storage is empty');
+      local = [];
     }
+
+    this.booksArr = local;
+    this.booksArr.splice(bookId, 1);
     localStorage.setItem('books', JSON.stringify(this.booksArr));
     populateBookSection();
   }
 
   // SAVE INTERACTION WITH USER IN LOCAL STORAGE
   addToStorage() {
+    const localData = localStorage.getItem('books');
+    let local = [];
+
+    try {
+      local = JSON.parse(localData);
+    } catch (error) {
+      console.warn('local storage is empty');
+      local = [];
+    }
+
+    this.booksArr = local;
     const book = {};
     book.title = document.querySelector('#book_title').value;
     book.author = document.querySelector('#book_author').value;
     this.booksArr.push(book);
-    books = this.booksArr
     localStorage.setItem('books', JSON.stringify(this.booksArr));
     populateBookSection();
   }
@@ -52,13 +66,13 @@ populateBookSection = function () {
     console.warn('local storage is empty');
     local = [];
   }
-  books.splice(0, books.length, ...local);
 
+  bookItem.booksArr = local;
   booksWrapper.innerHTML = '';
-  for (let i = 0; i < books.length; i += 1) {
+  for (let i = 0; i < bookItem.booksArr.length; i += 1) {
     const book = document.createElement('div');
     book.className = 'book-item';
-    const bookElement = books[i];
+    const bookElement = bookItem.booksArr[i];
 
     const bookHTML = `
         <p>"${bookElement.title}" by</p>
@@ -69,8 +83,6 @@ populateBookSection = function () {
 
     book.innerHTML = bookHTML;
     booksWrapper.appendChild(book);
-    const deleteBtn = book.querySelector('.delete-btn');
-    deleteBtn.addEventListener('click', (event) => bookItem.deleteBook(event));
   }
   bookItem.attachEventListener();
 };
