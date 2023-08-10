@@ -60,9 +60,13 @@ hr.vertical {
 }
 
 #book-collection {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
+}
+
+#book-collection.show {
+  display: flex;
 }
 
 #book-collection-wrapper {
@@ -87,10 +91,10 @@ hr.vertical {
 }
 
 #add-book-section {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 10px;
-  width: 30%;
+  padding: 50px 30%;
 }
 
 #book_title {
@@ -110,6 +114,10 @@ hr.vertical {
 #add_button {
   width: 33px;
   margin-left: auto;
+}
+
+#add-book-section.show {
+  display: flex;
 }
 
 #book-collection-wrapper > :nth-child(even) {

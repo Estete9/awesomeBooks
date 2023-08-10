@@ -1,6 +1,10 @@
 const addButton = document.getElementById('add_button');
 const booksWrapper = document.getElementById('book-collection-wrapper');
 let populateBookSection = () => {};
+// NAVIGATION MENU LOGIC\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+// BOOK COLLECTION CLASS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 class Books {
   constructor() {
     this.title = '';
