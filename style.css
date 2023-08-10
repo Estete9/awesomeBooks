@@ -65,8 +65,22 @@ hr.vertical {
   align-items: center;
 }
 
+#date-subheader {
+  font-size: 0.9rem;
+  margin-right: 20px;
+}
+
 #book-collection.show {
   display: flex;
+}
+
+#menu > .selected {
+  color: darkslateblue;
+  font-weight: 900;
+}
+
+#menu li {
+  cursor: pointer;
 }
 
 #contact-list li {

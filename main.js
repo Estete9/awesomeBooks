@@ -1,9 +1,23 @@
 const addButton = document.getElementById('add_button');
 const booksWrapper = document.getElementById('book-collection-wrapper');
 let populateBookSection = () => {};
+const navBtns = document.querySelectorAll('#menu li');
+
 // NAVIGATION MENU LOGIC\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+// onclick receives the index of which btn was clicked
+function HighlightSelection(index) {
+  navBtns.forEach((btn, i) => {
+    btn.classList.remove('selected');
+    if (index === i) {
+      // checks which button was clicked and adds a class
+      btn.classList.add('selected');
+    }
+  });
+}
+// CODE HERE
 
-
+// loop through btns adding onclick
+navBtns.forEach((btn, index) => (btn.onclick = () => navigate(index)));
 // BOOK COLLECTION CLASS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 class Books {
   constructor() {
@@ -54,7 +68,7 @@ class Books {
   attachEventListener() {
     addButton.onclick = this.addToStorage;
     const deleteBtns = Array.from(document.querySelectorAll('.delete-btn'));
-    deleteBtns.forEach((it) => it.onclick = this.deleteBook);
+    deleteBtns.forEach((it) => (it.onclick = this.deleteBook));
   }
 }
 
