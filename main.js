@@ -117,6 +117,7 @@ populateBookSection = function () {
 
   try {
     local = JSON.parse(localData);
+    if (local === null) local = [];
   } catch (error) {
     console.warn('local storage is empty');
     local = [];
