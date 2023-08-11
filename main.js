@@ -133,7 +133,7 @@ populateBookSection = function () {
     booksWrapper.textContent = 'Empty list';
     return;
   }
-  
+
   booksWrapper.innerHTML = '';
   for (let i = 0; i < bookItem.booksArr.length; i += 1) {
     const book = document.createElement('div');
@@ -153,5 +153,23 @@ populateBookSection = function () {
   bookItem.attachEventListener();
 };
 
+// DISPLAY CURRENT TIME LOGIC
+function displayTime() {
+  const option = {
+    month: 'long',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+  };
+  const today = new Date();
+  let date = today.toLocaleString('en-US', option);
+  date = date.replace(' at', ',');
+  document.getElementById('date-subheader').innerHTML = date;
+  setTimeout(displayTime, 1000);
+}
+displayTime();
+
+// FUNCTION CALLS
 bookItem.attachEventListener();
 populateBookSection();
