@@ -99,6 +99,8 @@ class Books {
     book.author = document.querySelector('#book_author').value;
     this.booksArr.push(book);
     localStorage.setItem('books', JSON.stringify(this.booksArr));
+    document.querySelector('#book_title').value = '';
+    document.querySelector('#book_author').value = '';
     populateBookSection();
   }
 
@@ -126,6 +128,12 @@ populateBookSection = function () {
   }
 
   bookItem.booksArr = local;
+
+  if (bookItem.booksArr.length <= 0) {
+    booksWrapper.textContent = 'Empty list';
+    return;
+  }
+  
   booksWrapper.innerHTML = '';
   for (let i = 0; i < bookItem.booksArr.length; i += 1) {
     const book = document.createElement('div');
